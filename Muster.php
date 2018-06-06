@@ -1,9 +1,23 @@
- <!DOCTYPE html> 
+<!DOCTYPE html> 
+<?php
+
+
+$titel = $_POST['titel'];
+$jahr = $_POST['jahr'];
+$regie = $_POST['regie'];
+$länge = $_POST['länge'];
+$inhalt = $_POST['inhalt'];
+
+
+?>
+
+    
+    
 
 <html lang="en"> 
 	<head> 
 		<meta charset="UTF-8" /> 
-		<title>Titel hinzufügen</title>
+		<title><?php echo $titel; ?></title>
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
@@ -32,28 +46,29 @@
         </nav>
         <div class="loginbox">
         
-        <img src="popcorn.png" class="avatar">
-                <h1 class="log_head">Titel Hinzufügen</h1>
+        <img src="popcorn.png" class="avatar" style="margin-top: -100px;">
+                <h1 class="log_head" style="margin-top: -100px;"><?php echo $titel; ?></h1>
             
-                <form action="Muster.php" method="post">
+            
+                <form action="" method="post">
+                    <div class="variable_mov">
                 
-                    <p class="log_p">Titel</p>
-                        <input type="text" name="titel" placeholder="Titel">
-                    <p class="log_p">Jahr</p>
-                        <input type="text" name="jahr" placeholder="Erscheinugsjahr">
-                    <p class="log_p">Regisseur</p>
-                        <input type="text" name="regie" placeholder="Regisseur">
-                    <p class="log_p">Länge</p>
-                        <input type="text" name="länge" placeholder="Länge">
-                    
-                    <p class="log_p">Inhalt</p>
-                    
-                    <textarea class="text_area" id="inhalt" name="inhalt" cols="70" rows="3" maxlength="400"></textarea>
-                    
-                        <input type="submit" name="" value="Titel Hinzufügen">
+                       
+                    <p class="log_p">Erscheinungsjahr: </p><p class="muster_layout"><?php echo $jahr; ?></p>
+                       
+                    <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $regie; ?></p>
+                       
+                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $länge; ?></p>
                         
                     
+                    <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $inhalt; ?></p>
+               
+                    
+                        <input type="submit" name="watchlist" value="Zur Watchlist hinzufügen">
+                    </div>  
+                    
                 </form>
+                
             </div>
         
         

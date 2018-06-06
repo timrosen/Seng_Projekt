@@ -38,17 +38,19 @@
                 <form action="Muster.php" method="post">
                 
                     <p class="log_p">Titel</p>
-                        <input type="text" name="titel" placeholder="Titel">
+                        <input type="text" name="titel" placeholder="Titel" required>
                     <p class="log_p">Jahr</p>
-                        <input type="text" name="jahr" placeholder="Erscheinugsjahr">
+                        <input type="text" name="jahr" placeholder="Erscheinugsjahr" required>
                     <p class="log_p">Regisseur</p>
-                        <input type="text" name="regie" placeholder="Regisseur">
+                        <input type="text" name="regie" placeholder="Regisseur" required>
                     <p class="log_p">Länge</p>
-                        <input type="text" name="länge" placeholder="Länge">
+                        <input type="text" name="länge" placeholder="Länge" required>
                     
                     <p class="log_p">Inhalt</p>
                     
-                    <textarea class="text_area" id="inhalt" name="inhalt" cols="70" rows="3" maxlength="400"></textarea>
+                    <textarea class="text_area" id="inhalt" name="inhalt" cols="70" rows="3" maxlength="400" required></textarea>
+                    
+
                     
                         <input type="submit" name="" value="Titel Hinzufügen">
                         
