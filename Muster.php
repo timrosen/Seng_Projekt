@@ -1,30 +1,11 @@
 <!DOCTYPE html> 
 <?php
-    $servername = "localhost";
-    $username = "tim";
-    $password = "projekt";
-    $dbname = "projekt";
-        
-
-$titel = $_POST['titel'];
-$jahr = $_POST['jahr'];
-$regie = $_POST['regie'];
-$dauer = $_POST['dauer'];
-$inhalt = $_POST['inhalt'];
 
 
+include_once 'includes/connection.php';
 
-try{
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO film (titel, jahr, regie, dauer, inhalt)  VALUES ('$titel', '$jahr', '$regie', '$dauer', '$inhalt')";
-    $conn->exec($sql);
-}
-catch(PDOException $e){
-    echo $sql . "<br>" . $e->getMessage();
-}
-    $conn = null;
-   
+SESSION_START();
+    
 ?>
 
     
@@ -34,7 +15,7 @@ catch(PDOException $e){
    
 	<head> 
 		<meta charset="UTF-8" /> 
-		<title><?php echo $titel; ?></title>
+		<title><?php echo $_SESSION["titel"]; ?></title>
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
@@ -50,7 +31,7 @@ catch(PDOException $e){
         <nav id="mainnav">
             <ul>
                 <div class="dropdown">
-                <li><a href="Login.html" class="dropbtn">Login</a></li>
+                <li><a href="Login.php" class="dropbtn">Login</a></li>
                     <div class="dropdown_content">
                         <a href="Register.php">Registrieren</a>
                     </div>
@@ -58,27 +39,27 @@ catch(PDOException $e){
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
                 
-                <li><a href="Suche.html">Suche</a></li>
+                <li><a href="Suche.php">Suche</a></li>
             </ul>
         </nav>
         <div class="loginbox">
         
         <img src="popcorn.png" class="avatar" style="margin-top: -100px;">
-                <h1 class="log_head" style="margin-top: -100px;"><?php echo $titel; ?></h1>
+                <h1 class="log_head" style="margin-top: -100px;"><?php echo $_SESSION["titel"]; ?></h1>
             
             
                 <form action="" method="post">
                     <div class="variable_mov">
                 
                        
-                    <p class="log_p">Erscheinungsjahr: </p><p class="muster_layout"><?php echo $jahr; ?></p>
+                    <p class="log_p">Erscheinungsjahr: </p><p class="muster_layout"><?php echo $_SESSION["jahr"]; ?></p>
                        
-                    <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $regie; ?></p>
+                    <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $_SESSION["regie"]; ?></p>
                        
-                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $dauer; ?></p>
+                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $_SESSION["dauer"]; ?></p>
                         
                     
-                    <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $inhalt; ?></p>
+                    <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $_SESSION["inhalt"]; ?></p>
                
                     
                         <input type="submit" name="watchlist" value="Zur Watchlist hinzufügen">
@@ -89,8 +70,11 @@ catch(PDOException $e){
             </div>
         
         
-        <footer><a href="Index.html">Startseite</a></footer>
+        <footer><a href="Index.php">Startseite</a></footer>
         
 		
 	</body> 
 </html>
+<?php 
+    session_destroy();
+?>

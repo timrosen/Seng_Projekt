@@ -7,9 +7,6 @@
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
-        <?php
-            
-        ?>
    
        
 	</head> 
@@ -23,7 +20,7 @@
         <nav id="mainnav">
             <ul>
                 <div class="dropdown">
-                <li><a href="Login.html" class="dropbtn">Login</a></li>
+                <li><a href="Login.php" class="dropbtn">Login</a></li>
                     <div class="dropdown_content">
                         <a href="Register.php">Registrieren</a>
                     </div>
@@ -31,7 +28,7 @@
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
                 
-                <li><a href="Suche.html">Suche</a></li>
+                <li><a href="Suche.php">Suche</a></li>
             </ul>
         </nav>
         <div class="loginbox">
@@ -39,7 +36,7 @@
         <img src="popcorn.png" class="avatar">
                 <h1 class="log_head">Titel Hinzufügen</h1>
             
-                <form action="Muster.php" method="post">
+                <form action="add_mov.php" method="post">
                 
                     <p class="log_p">Titel</p>
                         <input type="text" name="titel" placeholder="Titel" required>
@@ -66,9 +63,10 @@
                     
                 </form>
             </div>
+
         
         
-        <footer><a href="Index.html">Startseite</a></footer>
+        <footer><a href="Index.php">Startseite</a></footer>
         
 		
 	</body> 

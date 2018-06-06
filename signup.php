@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost";
-    $username = "tim";
-    $password = "projekt";
-    $dbname = "projekt";
+                                /*$servername = "localhost";
+                                $username = "tim";
+                                $password = "projekt";
+                                $dbname = "projekt";*/
         
 
 $user = $_POST['user'];
@@ -12,17 +12,25 @@ $pwd = $_POST['pwd'];
 
 
 
-try{
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO users (user, email, pwd)  VALUES ('$user', '$email', '$pwd')";
-    $conn->exec($sql);
-}
-catch(PDOException $e){
-    echo $sql . "<br>" . $e->getMessage();
-}
-    $conn = null;
-   
+                                /*try{
+                                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    $sql = "INSERT INTO users (user, email, pwd)  VALUES ('$user', '$email', '$pwd')";
+                                    $conn->exec($sql);
+                                }
+                                catch(PDOException $e){
+                                    echo $sql . "<br>" . $e->getMessage();
+                                }
+                                    $conn = null;
+                                   */
+include_once 'includes/connection.php';
+
+ $sql = "INSERT INTO users (user, email, pwd)  
+ VALUES ('$user', '$email', '$pwd');";
+
+
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 
@@ -58,7 +66,7 @@ catch(PDOException $e){
         </div>
         
         
-        <footer><a href="Index.html">Startseite</a></footer>
+        <footer><a href="Index.php">Startseite</a></footer>
         
 		
 	</body> 
