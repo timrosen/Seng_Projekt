@@ -7,6 +7,10 @@
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
+        <?php
+            
+        ?>
+   
        
 	</head> 
 	<body> 
@@ -21,7 +25,7 @@
                 <div class="dropdown">
                 <li><a href="Login.html" class="dropbtn">Login</a></li>
                     <div class="dropdown_content">
-                        <a href="Register.html">Registrieren</a>
+                        <a href="Register.php">Registrieren</a>
                     </div>
                 </div>
                 <li><a href="Verlauf.html">Verlauf</a></li>
@@ -39,20 +43,25 @@
                 
                     <p class="log_p">Titel</p>
                         <input type="text" name="titel" placeholder="Titel" required>
+
                     <p class="log_p">Jahr</p>
                         <input type="text" name="jahr" placeholder="Erscheinugsjahr" required>
+             
                     <p class="log_p">Regisseur</p>
                         <input type="text" name="regie" placeholder="Regisseur" required>
+              
                     <p class="log_p">Länge</p>
-                        <input type="text" name="länge" placeholder="Länge" required>
+                        <input type="text" name="dauer" placeholder="Länge" required>
+                
                     
-                    <p class="log_p">Inhalt</p>
+                    <p class="log_p">Handlung</p>
                     
                     <textarea class="text_area" id="inhalt" name="inhalt" cols="70" rows="3" maxlength="400" required></textarea>
+            
                     
 
                     
-                        <input type="submit" name="" value="Titel Hinzufügen">
+                        <input type="submit" name="add" value="Titel Hinzufügen">
                         
                     
                 </form>

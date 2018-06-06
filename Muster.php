@@ -1,20 +1,37 @@
 <!DOCTYPE html> 
 <?php
-
+    $servername = "localhost";
+    $username = "tim";
+    $password = "projekt";
+    $dbname = "projekt";
+        
 
 $titel = $_POST['titel'];
 $jahr = $_POST['jahr'];
 $regie = $_POST['regie'];
-$länge = $_POST['länge'];
+$dauer = $_POST['dauer'];
 $inhalt = $_POST['inhalt'];
 
 
+
+try{
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT INTO film (titel, jahr, regie, dauer, inhalt)  VALUES ('$titel', '$jahr', '$regie', '$dauer', '$inhalt')";
+    $conn->exec($sql);
+}
+catch(PDOException $e){
+    echo $sql . "<br>" . $e->getMessage();
+}
+    $conn = null;
+   
 ?>
 
     
     
 
 <html lang="en"> 
+   
 	<head> 
 		<meta charset="UTF-8" /> 
 		<title><?php echo $titel; ?></title>
@@ -35,7 +52,7 @@ $inhalt = $_POST['inhalt'];
                 <div class="dropdown">
                 <li><a href="Login.html" class="dropbtn">Login</a></li>
                     <div class="dropdown_content">
-                        <a href="Register.html">Registrieren</a>
+                        <a href="Register.php">Registrieren</a>
                     </div>
                 </div>
                 <li><a href="Verlauf.html">Verlauf</a></li>
@@ -58,7 +75,7 @@ $inhalt = $_POST['inhalt'];
                        
                     <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $regie; ?></p>
                        
-                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $länge; ?></p>
+                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $dauer; ?></p>
                         
                     
                     <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $inhalt; ?></p>
