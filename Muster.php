@@ -38,7 +38,7 @@ SESSION_START();
                 </div>
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
-                
+                <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
                 <li><a href="Suche.php">Suche</a></li>
             </ul>
         </nav>

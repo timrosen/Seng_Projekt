@@ -55,7 +55,9 @@ include_once 'includes/connection.php';
         
         if($resultCheck > 0){
             
-            while($row = mysqli_fetch_assoc($result)){
+           for($i=0; $i < 5; $i++){
+               
+               $row = mysqli_fetch_assoc($result);
         ?>
         
         <div class="variable_mov">

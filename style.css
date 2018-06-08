@@ -267,5 +267,9 @@ footer a:hover {
     
 }
 
-
-
+.search_more{
+    
+    color: black;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace; 
+}

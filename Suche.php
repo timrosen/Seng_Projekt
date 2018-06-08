@@ -42,15 +42,15 @@ include_once 'includes/connection.php';
             
             <div class="search_box">
                 
-            <input class="search_text" type="text" name="suche" placeholder="Suchen">
-                
-               <input type="submit" class="search_button" value=">>">
-                
-               <!-- <a class="search_button" type="submit">
-               
+            <input class="search_text" type="text" name="search" placeholder="Suchen">
+                <button  class="search_button" type="submit" name="submit_search">  
                 <i style="font-size:24px" class="fa">&#xf002;</i>
-                    
-                </a>-->
+                </button>
+                
+            <!--<a class="search_button" type="submit">-->
+            <!-- <input type="submit" class="search_button" value=">>"> -->
+                
+             
             
         
         
