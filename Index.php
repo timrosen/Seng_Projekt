@@ -1,5 +1,6 @@
 <?php 
 
+session_start();
 include_once 'includes/connection.php';
 
 ?>
@@ -26,16 +27,46 @@ include_once 'includes/connection.php';
         
         <nav id="mainnav">
             <ul>
-                <div class="dropdown">
-                <li><a href="Login.php" class="dropbtn">Login</a></li>
-                    <div class="dropdown_content">
-                        <a href="Register.php">Registrieren</a>
-                    </div>
-                </div>
-                <li><a href="Verlauf.html">Verlauf</a></li>
-                <li><a href="Watchlist.html">Watchlist</a></li>
-                <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
-                <li><a href="Suche.php">Suche</a></li>
+                
+         
+                
+           
+                
+                <?php
+                if(!isset($_SESSION['user_id'])){
+                ?>
+                    <div class="dropdown">
+                            <li><a href="Login.php" class="dropbtn">Login</a></li>
+                                <div class="dropdown_content">
+                                    <a href="Register.php">Registrieren</a>
+                                </div>
+                            </div>
+                    <li><a href="Suche.php">Suche</a></li>
+                <?php  
+                    
+                    
+                }elseif(isset($_SESSION['user_id'])){
+                ?>      
+                            <form action="includes/logout.inc.php" method="post">
+                                    <button type="submit" name="submit">Logout</button>
+                                </form>
+                            
+                               
+                        <li><a href="Verlauf.html">Verlauf</a></li>
+                        <li><a href="Watchlist.html">Watchlist</a></li>
+                        <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
+                        <li><a href="Suche.php">Suche</a></li>
+                        
+                <?php 
+                    
+                }
+                
+                ?>
+
+
+                
+                
+                
             </ul>
         </nav>
         

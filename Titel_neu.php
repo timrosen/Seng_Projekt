@@ -1,4 +1,9 @@
- <!DOCTYPE html> 
+<?php
+    session_start();
+?>
+
+
+<!DOCTYPE html> 
 
 <html lang="en"> 
 	<head> 
@@ -19,12 +24,13 @@
         
         <nav id="mainnav">
             <ul>
-                <div class="dropdown">
+                
+               <!-- <div class="dropdown">
                 <li><a href="Login.php" class="dropbtn">Login</a></li>
                     <div class="dropdown_content">
                         <a href="Register.php">Registrieren</a>
                     </div>
-                </div>
+                </div>-->
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
                 

@@ -1,5 +1,8 @@
 <?php
+
+        session_start();
         include 'includes/connection.php';
+    
 ?>
 
 <!DOCTYPE html> 
@@ -30,9 +33,19 @@
                         <a href="Register.php">Registrieren</a>
                     </div>
                 </div>
+                <?php
+                if(isset($_SESSION['user_id'])){
+                    
+                    
+                ?>
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
                 <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
+                <?php
+                    
+                }
+                ?>
+         
                
             </ul>
         </nav>

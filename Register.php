@@ -1,9 +1,14 @@
+<?php
+    session_start();
+?>
+
+
 <!DOCTYPE html> 
 
 <html lang="en"> 
 	<head> 
 		<meta charset="UTF-8" /> 
-		<title>Login</title>
+		<title>Registrieren</title>
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
@@ -15,12 +20,23 @@
         <header><h1 id="heading">Software Engineering Projekt 2018</h1></header>
   
         
-        <nav id="mainnav">
+        <nav id="mainnav"> 
             <ul>
-                <li><a href="Login.php">Login</a></li>
+                
+                <?php
+                if(isset($_SESSION['user_id'])){
+                    
+                    
+                ?>
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
                 <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
+                <?php
+                    
+                }
+                ?>
+                
+                <li><a href="Login.php">Login</a></li>
                 <li><a href="Suche.php">Suche</a></li>
             </ul>
         </nav>
@@ -28,7 +44,8 @@
         
         <img src="popcorn.png" class="avatar">
                 <h1 class="log_head">Registrieren</h1>
-                <form action="signup.php" method="post">
+                
+                <form action="includes/signup.inc.php" method="post">
                 
                     <p class="log_p">Benutzername</p>
                         <input type="text" name="user" placeholder="Benutzername" required>
@@ -36,7 +53,7 @@
                         <input type="text" name="email" placeholder="E-Mail" required>
                     <p class="log_p">Passwort</p>
                         <input type="password" name="pwd" placeholder="Passwort" required>
-                        <input type="submit" name="signup" value="Registrieren">
+                        <input type="submit" name="submit" value="Registrieren">
                             <a href="#">Passwort vergessen?</a><br>
                             
                 

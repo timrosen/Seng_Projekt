@@ -2,9 +2,13 @@
 <?php
 
 
+session_start();
+
 include_once 'includes/connection.php';
 
-SESSION_START();
+
+
+
     
 ?>
 
@@ -30,16 +34,19 @@ SESSION_START();
         
         <nav id="mainnav">
             <ul>
-                <div class="dropdown">
-                <li><a href="Login.php" class="dropbtn">Login</a></li>
-                    <div class="dropdown_content">
-                        <a href="Register.php">Registrieren</a>
-                    </div>
-                </div>
+            
+                <?php
+                if(isset($_SESSION['user_id'])){
+                    
+                    
+                ?>
                 <li><a href="Verlauf.html">Verlauf</a></li>
                 <li><a href="Watchlist.html">Watchlist</a></li>
                 <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
-                <li><a href="Suche.php">Suche</a></li>
+                <?php
+                    
+                }
+                ?>
             </ul>
         </nav>
         <div class="loginbox">
@@ -75,6 +82,3 @@ SESSION_START();
 		
 	</body> 
 </html>
-<?php 
-    session_destroy();
-?>
