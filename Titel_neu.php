@@ -19,7 +19,22 @@
             <div style="float: left; width: 50px;">
                 <img src="popcorn.png" width="40px" height="55px" style="margin-top: -10px;">
             </div>
-        <header><h1 id="heading">Software Engineering Projekt 2018</h1></header>
+        <header><h1 id="heading">Software Engineering Projekt 2018</h1>
+        <?php
+            if(isset($_SESSION['user_id'])){
+        ?>
+                    
+                    
+            
+                     <form action="includes/logout.inc.php" method="post">
+                             <button type="submit" name="submit" class="logout_btn">Logout</button>
+                    </form>
+            
+            
+        <?php
+            }
+        ?>
+        </header>
   
         
         <nav id="mainnav">
@@ -32,9 +47,9 @@
                     </div>
                 </div>-->
                 <li><a href="Verlauf.html">Verlauf</a></li>
-                <li><a href="Watchlist.html">Watchlist</a></li>
-                
+                <li><a href="Watchlist.php">Watchlist</a></li>
                 <li><a href="Suche.php">Suche</a></li>
+                <p class="user_login">Eingeloggt als: <?php echo $_SESSION['username']; ?></p>
             </ul>
         </nav>
         <div class="loginbox">

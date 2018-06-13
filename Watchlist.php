@@ -1,23 +1,25 @@
-<?php
+<?php 
 
-        session_start();
-        include 'includes/connection.php';
-    
+session_start();
+include_once 'includes/connection.php';
+
 ?>
+
+
+
 
 <!DOCTYPE html> 
 
 <html lang="en"> 
 	<head> 
 		<meta charset="UTF-8" /> 
-		<title>Suchergebnis</title>
+		<title>Watchlist</title> 
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	</head> 
-	<body class="body_search"> 
-        
+	<body>
             <div style="float: left; width: 50px;">
                 <img src="popcorn.png" width="40px" height="55px" style="margin-top: -10px;">
             </div>
@@ -32,9 +34,7 @@
             }
         ?>
         </header>
-        
   
-        
         <nav id="mainnav">
             <ul>
             <?php
@@ -49,10 +49,9 @@
                     <li><a href="Suche.php">Suche</a></li>
             <?php  
                     
-                    
                 }elseif(isset($_SESSION['user_id'])){
-            ?>
-                
+                    
+            ?>      
                         <li><a href="Verlauf.html">Verlauf</a></li>
                         <li><a href="Watchlist.php">Watchlist</a></li>
                         <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
@@ -64,66 +63,40 @@
                 }
                 
             ?>
-         
-               
             </ul>
         </nav>
         
-        <div id="content">
+    <div id="content">
                 <div style="float: left; width: 50px;">
                 <img src="popcorn.png" width="40px" height="55px" style="margin-top: 30px;">
-        </div>
-        <h3 id="heading">Suchergebnis</h3>
+                </div>
+        <h3 id="heading">Watchlist</h3>
         
         
-        <?php
-        if(isset($_POST['submit_search'])){
+            <form action="search_mov.php" method="post">
+
+                <div class="search_box">
+
+                <input class="search_text" type="text" name="search" placeholder="Suchen">
+                    <button  class="search_button" type="submit" name="submit_search">  
+                    <i style="font-size:24px" class="fa">&#xf002;</i>
+                    </button>
+
+                <!--<a class="search_button" type="submit">-->
+                <!-- <input type="submit" class="search_button" value=">>"> -->
+
+                </div>
+            </form>
+    </div>
             
-            $search = mysqli_real_escape_string($conn, $_POST['search']); //keine SQL Statements sollen ausgeführt werden
-            
-            $sql = "SELECT * FROM film WHERE titel LIKE '%$search%'"; // Tabelle wird durchsucht
-            $result = mysqli_query($conn, $sql); // SQL Statement wird an die Datenbank übermittelt
-            $queryResult = mysqli_num_rows($result); // Übereinstimmungen werden "geholt"
-            
-            ?><p style="color: black"><?php echo $queryResult ?> Suchergebnis(se)</p>
-            
-            <?php
-                
-            if($queryResult > 0){
-                
-                while($row = mysqli_fetch_assoc($result)){
-                ?>  
-                        <div class="variable_mov">
+    
 
-                            <h1 class="log_head"><?php echo $row['titel']; ?></h1>
-                            <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $row['inhalt']; ?></p>
-                            
-                            <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&inhalt=".$row['inhalt']."'" ?>>
-                                <p style="color: white;">Weiterlesen</p></a>
-
-                        </div>  
-                  
-                <?php
-                }
-                
-            }else{
-                
-                echo "Keine Suchergebnisse mit dem Betreff $search";
-            }
             
-        }
         
         
-        ?>
-        </div>
-
+      <footer><a href="Index.php">Startseite</a></footer>
         
+  
         
-            <footer><a href="Index.php">Startseite</a></footer>
-
-</body>
-</html>
-
-
-
-<!--<meta http-equiv="refresh" content="0.5; URL='Muster.php'"/>-->
+	</body> 
+</html> 
