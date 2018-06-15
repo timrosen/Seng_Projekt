@@ -1,6 +1,6 @@
 <?php
 
-// Warum auch immer funktioniert das regsitrieren nur wenn die folgenden Zeilen NICHT in einer anderen Datei (connection.php) liegen und inkludiert werden. Bei den anderen Dateien, bei denen eine Verbindung zur Datenbank aufgebaut wird funktioniert es ohne Probleme wenn die Datei connection.php inkludiert wird
+// Warum auch immer funktioniert das Regsitrieren nur wenn die folgenden Zeilen NICHT in einer anderen Datei (connection.php) liegen und inkludiert werden. Bei den anderen Dateien, bei denen eine Verbindung zur Datenbank aufgebaut wird funktioniert es ohne Probleme wenn die Datei connection.php inkludiert wird
 
 $servername = "localhost";
 $username = "root";
@@ -58,6 +58,23 @@ if(isset($_POST['submit'])){
                     
                     $sql = "INSERT INTO users (username, email, pwd) VALUES ('$username', '$email', '$hashedPwd');";
                     $result = mysqli_query($conn, $sql);
+                    
+                    //Tabellen für Watchlist und Verlauf erstellen
+                    
+                   /* $sql_watchlist = "CREATE TABLE '$username'_watchlist (titel varchar(40), jahr int(11), regie varchar(40), dauer varchar(20), inhalt varchar(400));";
+                    
+                    $sql_history = "CREATE TABLE '$username'_history (titel varchar(40), jahr int(11), regie varchar(40), dauer varchar(20), inhalt varchar(400));";
+                    
+                    $result_watchlist = mysqli_query($conn, $sql_watchlist);
+                    $result_history = mysqli_query($conn, $sql_history);
+                    
+                    declare @Tabellenname as nvarchar(max);
+                    declare @Statement as nvarchar(max);
+                    set @Tabellenname = "'$username'_watchlist";
+                    set @Statement = "CREATE TABLE @Tabellenname (titel varchar(40), jahr int(11), regie varchar(40), dauer varchar(20), inhalt varchar(400));";
+                    execute sp_executesql @Statement;
+                    
+                    */
                     
                     header("Location: ../Login.php?signup=success");
                     exit();

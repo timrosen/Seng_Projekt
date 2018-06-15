@@ -1,36 +1,31 @@
-<!DOCTYPE html> 
-<?php
-
+<?php 
 
 session_start();
-
 include_once 'includes/connection.php';
 
 
-
-
-    
 ?>
 
-    
-    
+
+
+
+<!DOCTYPE html> 
 
 <html lang="en"> 
-   
 	<head> 
 		<meta charset="UTF-8" /> 
-		<title><?php echo $_SESSION["titel"]; ?></title>
+		<title>Verlauf</title> 
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
-       
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	</head> 
-	<body> 
+	<body>
             <div style="float: left; width: 50px;">
                 <img src="popcorn.png" width="40px" height="55px" style="margin-top: -10px;">
             </div>
         <header><h1 id="heading">Software Engineering Projekt 2018</h1>
-         <?php
+        <?php
             if(isset($_SESSION['user_id'])){
         ?>
             <form action="includes/logout.inc.php" method="post">
@@ -41,11 +36,9 @@ include_once 'includes/connection.php';
         ?>
         </header>
   
-        
         <nav id="mainnav">
             <ul>
-            
-               <?php
+            <?php
                 if(!isset($_SESSION['user_id'])){
             ?>
                     <div class="dropdown">
@@ -73,37 +66,72 @@ include_once 'includes/connection.php';
             ?>
             </ul>
         </nav>
-        <div class="loginbox">
         
-        <img src="popcorn.png" class="avatar" style="margin-top: -100px;">
-                <h1 class="log_head" style="margin-top: -100px;"><?php echo $_SESSION["titel"]; ?></h1>
+    <div id="content">
+                <div style="float: left; width: 50px;">
+                <img src="popcorn.png" width="40px" height="55px" style="margin-top: 30px;">
+                </div>
+        <h3 id="heading">Verlauf</h3>
+        
+        <?php
+        
+            $sql = "SELECT * FROM verlauf;";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($result);
+        
+        if($resultCheck > 0){
             
-            
-                
-                    <div class="variable_mov">
-                
-                       
-                    <p class="log_p">Erscheinungsjahr: </p><p class="muster_layout"><?php echo $_SESSION["jahr"]; ?></p>
-                       
-                    <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $_SESSION["regie"]; ?></p>
-                       
-                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $_SESSION["dauer"]; ?></p>
-                        
-                    
-                    <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $_SESSION["inhalt"]; ?></p>
+           while($row = mysqli_fetch_assoc($result)){
                
-                    
-                  
-                        
-                    </div>  
-                    
+               
+        ?>
+        
+        <div class="variable_mov">
                 
-                
-            </div>
+            <h1 class="log_head"><?php echo $row['titel']; ?></h1>
+            <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $row['inhalt'];?></p>
+            
+            
+            
+            
+            
+            <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+            <p class="watchlist_link">Weiterlesen</p></a>
+            
+            
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>  
+        <?php
+            }
+            
+        }else{
+            
+        ?>
+        
+        <p class="log_p">Keine Titel in der Watchlist vorhanden!</p>
+        
+        <?php
+        }
         
         
-        <footer><a href="Index.php">Startseite</a></footer>
+        ?>
         
-		
+        
+        
+           
+    </div>
+            
+    
+
+            
+        
+        
+      <footer><a href="Index.php">Startseite</a></footer>
+        
+  
+        
 	</body> 
-</html>
+</html> 

@@ -53,7 +53,7 @@
                 }elseif(isset($_SESSION['user_id'])){
             ?>
                 
-                        <li><a href="Verlauf.html">Verlauf</a></li>
+                        <li><a href="Verlauf.php">Verlauf</a></li>
                         <li><a href="Watchlist.php">Watchlist</a></li>
                         <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
                         <li><a href="Suche.php">Suche</a></li>
@@ -85,7 +85,9 @@
             $result = mysqli_query($conn, $sql); // SQL Statement wird an die Datenbank übermittelt
             $queryResult = mysqli_num_rows($result); // Übereinstimmungen werden "geholt"
             
-            ?><p style="color: black"><?php echo $queryResult ?> Suchergebnis(se)</p>
+            ?><p class="log_p"><?php echo $queryResult ?> Suchergebnis(se)</p>
+            <br>
+            <br>
             
             <?php
                 
@@ -98,9 +100,20 @@
                             <h1 class="log_head"><?php echo $row['titel']; ?></h1>
                             <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $row['inhalt']; ?></p>
                             
-                            <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&inhalt=".$row['inhalt']."'" ?>>
-                                <p style="color: white;">Weiterlesen</p></a>
-
+                            
+                <?php   
+                    if(isset($_SESSION['user_id'])){
+                 ?>               
+                            <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+                            <p class="watchlist_link">Weiterlesen</p></a>
+                            
+                            <a <?php echo "<a href='includes/watchlist.inc.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+                            <p class="watchlist_link">+ Watchlist</p></a>
+                            <br>
+                            <br>
+                <?php 
+                    }
+                ?>       
                         </div>  
                   
                 <?php

@@ -25,7 +25,7 @@
                     
                     
                 ?>
-                <li><a href="Verlauf.html">Verlauf</a></li>
+                <li><a href="Verlauf.php">Verlauf</a></li>
                 <li><a href="Watchlist.php">Watchlist</a></li>
                 <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
                 <?php

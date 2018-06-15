@@ -3,6 +3,7 @@
 session_start();
 include_once 'includes/connection.php';
 
+
 ?>
 
 
@@ -72,21 +73,58 @@ include_once 'includes/connection.php';
                 </div>
         <h3 id="heading">Watchlist</h3>
         
+        <?php
         
-            <form action="search_mov.php" method="post">
-
-                <div class="search_box">
-
-                <input class="search_text" type="text" name="search" placeholder="Suchen">
-                    <button  class="search_button" type="submit" name="submit_search">  
-                    <i style="font-size:24px" class="fa">&#xf002;</i>
-                    </button>
-
-                <!--<a class="search_button" type="submit">-->
-                <!-- <input type="submit" class="search_button" value=">>"> -->
-
-                </div>
-            </form>
+            $sql = "SELECT * FROM watchlist;";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($result);
+        
+        if($resultCheck > 0){
+            
+           while($row = mysqli_fetch_assoc($result)){
+               
+               
+        ?>
+        
+        <div class="variable_mov">
+                
+            <h1 class="log_head"><?php echo $row['titel']; ?></h1>
+            <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $row['inhalt'];?></p>
+            
+            
+            
+            <a <?php echo "<a href='includes/history.inc.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+            <p class="watchlist_link">Watched</p></a>
+            
+            
+            <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+            <p class="watchlist_link">Weiterlesen</p></a>
+            
+            <a <?php echo "<a href='includes/delete.inc.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+            <p class="watchlist_link">Löschen</p></a>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>  
+        <?php
+            }
+            
+        }else{
+            
+        ?>
+        
+        <p class="log_p">Keine Titel in der Watchlist vorhanden!</p>
+        
+        <?php
+        }
+        
+        
+        ?>
+        
+        
+        
+           
     </div>
             
     

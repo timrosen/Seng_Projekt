@@ -48,7 +48,7 @@ include_once 'includes/connection.php';
                     
                     
                 ?>
-                <li><a href="Verlauf.html">Verlauf</a></li>
+                <li><a href="Verlauf.php">Verlauf</a></li>
                 <li><a href="Watchlist.php">Watchlist</a></li>
                 <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
                 <p class="user_login">Eingeloggt als: <?php echo $_SESSION['username']; ?></p>
