@@ -84,8 +84,8 @@
             $sql = "SELECT * FROM film WHERE titel LIKE '%$search%'"; // Tabelle wird durchsucht
             $result = mysqli_query($conn, $sql); // SQL Statement wird an die Datenbank übermittelt
             $queryResult = mysqli_num_rows($result); // Übereinstimmungen werden "geholt"
-            
-            ?><p class="log_p"><?php echo $queryResult ?> Suchergebnis(se)</p>
+            ?>
+            <p class="log_p"><?php echo $queryResult ?> Suchergebnis(se)</p>
             <br>
             <br>
             
@@ -120,8 +120,8 @@
                 }
                 
             }else{
+                    echo "Keine Suchergebnisse mit dem betreff $search";
                 
-                echo "Keine Suchergebnisse mit dem Betreff $search";
             }
             
         }

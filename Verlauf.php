@@ -75,7 +75,9 @@ include_once 'includes/connection.php';
         
         <?php
         
-            $sql = "SELECT * FROM verlauf;";
+             $username = $_SESSION['username'];
+        
+            $sql = "SELECT * FROM verlauf WHERE username='$username';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
         
@@ -111,8 +113,7 @@ include_once 'includes/connection.php';
             
         ?>
         
-        <p class="log_p">Keine Titel in der Watchlist vorhanden!</p>
-        
+        <p class="log_p">Keine Titel im Verlauf vorhanden!</p>
         <?php
         }
         

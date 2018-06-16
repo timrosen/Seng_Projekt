@@ -6,22 +6,24 @@ include_once 'connection.php';
 $titel = mysqli_real_escape_string($conn, $_GET['titel']); //keine SQL Statements sollen ausgeführt werden
 $regie = mysqli_real_escape_string($conn, $_GET['regie']); 
 
+$username = $_SESSION['username'];
 
-$sql = "SELECT * FROM watchlist WHERE titel='$titel' AND regie='$regie'";
+$sql = "SELECT * FROM watchlist WHERE username='$username' AND titel='$titel'";
 $result = mysqli_query($conn, $sql);
 
 $row = mysqli_fetch_assoc($result);
 
-$jahr = $row['jahr'];
-$dauer =  $row['dauer'];
+
 $inhalt = $row['inhalt'];
+$filmID = $row['filmID'];
         
 
-$sql_history = "INSERT INTO verlauf (titel, jahr, regie, dauer, inhalt) VALUES ('$titel', '$jahr', '$regie', '$dauer', '$inhalt')";
+$sql_history = "INSERT INTO verlauf (username, filmID, titel, regie, inhalt) VALUES ('$username', '$filmID', '$titel', '$regie', '$inhalt');";
+
 $result_history = mysqli_query($conn, $sql_history);
 
 
-$sql_del = "DELETE FROM watchlist WHERE titel='$titel' AND regie='$regie'";
+$sql_del = "DELETE FROM watchlist WHERE username='$username' AND titel='$titel'";
 $result_del = mysqli_query($conn, $sql_del);
 
 

@@ -74,15 +74,24 @@ include_once 'includes/connection.php';
         <h3 id="heading">Watchlist</h3>
         
         <?php
+            
+        $username = $_SESSION['username'];
         
-            $sql = "SELECT * FROM watchlist;";
+            $sql = "SELECT * FROM watchlist WHERE username='$username';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
         
+
+            
+        
         if($resultCheck > 0){
             
-           while($row = mysqli_fetch_assoc($result)){
+            
+            while($row = mysqli_fetch_assoc($result)){
                
+               
+               
+    
                
         ?>
         
