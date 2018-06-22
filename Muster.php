@@ -1,10 +1,13 @@
 <!DOCTYPE html> 
 <?php
 
-
+/*  
+    Weiterführen der zuvor gestarteten Session bzw. starten einer Session, damit die Session-Variablen 
+    weiter aktiv bleiben und im folgenden genutz werden können.
+*/
 session_start();
 
-include_once 'includes/connection.php';
+include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
 
 
 
@@ -31,6 +34,9 @@ include_once 'includes/connection.php';
             </div>
         <header><h1 id="heading">Software Engineering Projekt 2018</h1>
          <?php
+            /*
+                Logout Button wird nur angezeigt wenn ein User angemeldet ist
+            */
             if(isset($_SESSION['user_id'])){
         ?>
             <form action="includes/logout.inc.php" method="post">
@@ -46,6 +52,10 @@ include_once 'includes/connection.php';
             <ul>
             
                <?php
+                 /*
+                    Login bzw. Registrations Option wird nur agezeigt falls
+                    kein Nutzer angemeldet ist
+                */
                 if(!isset($_SESSION['user_id'])){
             ?>
                     <div class="dropdown">
@@ -56,6 +66,13 @@ include_once 'includes/connection.php';
                             </div>
                     <li><a href="Suche.php">Suche</a></li>
             <?php  
+                /*
+                    Die Optionen: Verlauf, Watchlist, Titel hinzufügen 
+                    werden nur angezeigt falls ein Nutzer angemeldet ist. 
+                    
+                    Außerdem wird der Nutzername , mit dem der User sich 
+                    angemeldet hat angezeigt.
+                */
                     
                 }elseif(isset($_SESSION['user_id'])){
                     

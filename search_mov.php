@@ -1,8 +1,12 @@
 <?php
+/*  
+    Weiterführen der zuvor gestarteten Session bzw. starten einer Session, damit die Session-Variablen 
+    weiter aktiv bleiben und im folgenden genutz werden können.
+*/
+session_start();
 
-        session_start();
-        include 'includes/connection.php';
-    
+include 'includes/connection.php'; // Verbindung zur Datenbank herstellen
+
 ?>
 
 <!DOCTYPE html> 
@@ -23,6 +27,9 @@
             </div>
         <header><h1 id="heading">Software Engineering Projekt 2018</h1>
         <?php
+            /*
+                Logout Button wird nur angezeigt wenn ein User angemeldet ist
+            */
             if(isset($_SESSION['user_id'])){
         ?>
             <form action="includes/logout.inc.php" method="post">
@@ -38,6 +45,10 @@
         <nav id="mainnav">
             <ul>
             <?php
+                /*
+                    Login bzw. Registrations Option wird nur agezeigt falls
+                    kein Nutzer angemeldet ist
+                */
                 if(!isset($_SESSION['user_id'])){
             ?>
                     <div class="dropdown">
@@ -48,8 +59,13 @@
                             </div>
                     <li><a href="Suche.php">Suche</a></li>
             <?php  
+                 /*
+                    Die Optionen: Verlauf, Watchlist, Titel hinzufügen 
+                    werden nur angezeigt falls ein Nutzer angemeldet ist. 
                     
-                    
+                    Außerdem wird der Nutzername , mit dem der User sich 
+                    angemeldet hat angezeigt.
+                */   
                 }elseif(isset($_SESSION['user_id'])){
             ?>
                 
@@ -77,20 +93,32 @@
         
         
         <?php
+        /*
+            Suchfunktion wird im folgenden asugeführt.
+        */
         if(isset($_POST['submit_search'])){
-            
-            $search = mysqli_real_escape_string($conn, $_POST['search']); //keine SQL Statements sollen ausgeführt werden
-            
+            /*
+                Die Datenbank (Filmtabelle) wird nach Übereinstimmungen durchsucht
+            */
+            $search = mysqli_real_escape_string($conn, $_POST['search']); 
             $sql = "SELECT * FROM film WHERE titel LIKE '%$search%'"; // Tabelle wird durchsucht
             $result = mysqli_query($conn, $sql); // SQL Statement wird an die Datenbank übermittelt
-            $queryResult = mysqli_num_rows($result); // Übereinstimmungen werden "geholt"
+            
+            $queryResult = mysqli_num_rows($result); // Anzahl der Suchergebnisse wird gespeichert
+            
+            
             ?>
-            <p class="log_p"><?php echo $queryResult ?> Suchergebnis(se)</p>
+            <p class="log_p"><?php echo $queryResult // Anzahl der Suchergebisse wird ausgegeben?> Suchergebnis(se)</p>
             <br>
             <br>
             
             <?php
+            /*
+                Alle gefunden Übererinstimmungen mit dem 
+                Suchwort werden im folgenden Angezeigt.
                 
+                Bei keinen Ergebnissen wird eine Meldung ausgegeben.
+            */
             if($queryResult > 0){
                 
                 while($row = mysqli_fetch_assoc($result)){
@@ -102,6 +130,15 @@
                             
                             
                 <?php   
+                    /*
+                        
+                        Folgende Optionen sind nur verfügbar falls der User angemeldet ist.
+                        
+                        Zusätzliche Informationen zu einem gesuchten 
+                        Film können über "Weiterlesen" erreicht werden.
+                        
+                        Der Titel kann mit "+Watchlist" direkt zur wWtchlist hinzugefügt werden.
+                    */
                     if(isset($_SESSION['user_id'])){
                  ?>               
                             <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
@@ -137,6 +174,3 @@
 </body>
 </html>
 
-
-
-<!--<meta http-equiv="refresh" content="0.5; URL='Muster.php'"/>-->

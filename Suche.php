@@ -1,8 +1,12 @@
 <?php
 
+/*  
+    Weiterführen der zuvor gestarteten Session bzw. starten einer Session, damit die Session-Variablen 
+    weiter aktiv bleiben und im folgenden genutz werden können.
+*/
 session_start();
 
-include_once 'includes/connection.php';
+include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
 
 ?>
 
@@ -25,12 +29,12 @@ include_once 'includes/connection.php';
             </div>
         <header><h1 id="heading">Software Engineering Projekt 2018</h1>
         <?php
+            /*
+                Logout Button wird nur angezeigt wenn ein User angemeldet ist
+            */
             if(isset($_SESSION['user_id'])){
         ?>
-                    
-                    
-            
-                     <form action="includes/logout.inc.php" method="post">
+                    <form action="includes/logout.inc.php" method="post">
                              <button type="submit" name="submit" class="logout_btn">Logout</button>
                     </form>
             
@@ -44,6 +48,13 @@ include_once 'includes/connection.php';
         <nav id="mainnav">
             <ul>
                <?php
+                /*
+                    Die Optionen: Verlauf, Watchlist, Titel hinzufügen 
+                    werden nur angezeigt falls ein Nutzer angemeldet ist. 
+                    
+                    Außerdem wird der Nutzername , mit dem der User sich 
+                    angemeldet hat angezeigt.
+                */
                 if(isset($_SESSION['user_id'])){
                     
                     
@@ -55,6 +66,10 @@ include_once 'includes/connection.php';
                 <?php
                     
                 }
+                /*
+                    Login bzw. Registrations Option wird nur agezeigt falls
+                    kein Nutzer angemeldet ist
+                */
                 if(!isset($_SESSION['user_id'])){
                 ?>
                 <div class="dropdown">
@@ -79,8 +94,7 @@ include_once 'includes/connection.php';
                 <i style="font-size:24px" class="fa">&#xf002;</i>
                 </button>
                 
-            <!--<a class="search_button" type="submit">-->
-            <!-- <input type="submit" class="search_button" value=">>"> -->
+            
                 
              
             

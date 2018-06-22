@@ -1,4 +1,8 @@
 <?php
+    /*  
+        Weiterführen der zuvor gestarteten Session bzw. starten einer Session, damit die Session-Variablen 
+        weiter aktiv bleiben und im folgenden genutz werden können.
+    */
     session_start();
 ?>
 
@@ -24,6 +28,11 @@
             <ul>
                 
                 <?php
+                /*
+                    Die Optionen: Verlauf, Watchlist, Titel hinzufügen 
+                    werden nur angezeigt falls ein Nutzer angemeldet ist. 
+
+                */
                 if(isset($_SESSION['user_id'])){
                     
                     

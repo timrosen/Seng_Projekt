@@ -1,5 +1,7 @@
 <?php
 
+/*Script zum Verbindungsaufbau mit der MySQL-Datenbank*/
+
 $servername = "localhost";
 $username = "root";
 $password = "";

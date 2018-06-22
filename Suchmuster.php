@@ -1,7 +1,11 @@
 <?php
+/*  
+    Weiterführen der zuvor gestarteten Session bzw. starten einer Session, damit die Session-Variablen 
+    weiter aktiv bleiben und im folgenden genutz werden können.
+*/
+session_start();
 
-    session_start();
-    include 'includes/connection.php';
+include 'includes/connection.php'; // Verbindung zur Datenbank herstellen
 
 ?>
 
@@ -21,6 +25,9 @@
             </div>
         <header><h1 id="heading">Software Engineering Projekt 2018</h1>
         <?php
+            /*
+                Logout Button wird nur angezeigt wenn ein User angemeldet ist
+            */
             if(isset($_SESSION['user_id'])){
         ?>
                 <form action="includes/logout.inc.php" method="post">
@@ -36,6 +43,10 @@
             <ul>
                 
                 <?php
+                /*
+                    Login bzw. Registrations Option wird nur agezeigt falls
+                    kein Nutzer angemeldet ist
+                */
                 if(!isset($_SESSION['user_id'])){
                 ?>
                     <div class="dropdown">
@@ -46,8 +57,13 @@
                             </div>
                     <li><a href="Suche.php">Suche</a></li>
                 <?php  
+                 /*
+                    Die Optionen: Verlauf, Watchlist, Titel hinzufügen 
+                    werden nur angezeigt falls ein Nutzer angemeldet ist. 
                     
-                    
+                    Außerdem wird der Nutzername , mit dem der User sich 
+                    angemeldet hat angezeigt.
+                */   
                 }elseif(isset($_SESSION['user_id'])){
                 ?>      
                             
@@ -74,16 +90,27 @@
         
             
         <?php
+                
+                /*
+                    Aus der zentralen Filmtabelle wird der Film geholt, 
+                    zudem der titel und Regisseur passt. 
+                    Danach werden die restlichen Daten zum jeweiligen Film
+                    ebenfalls aus der Tabelle "geholt" und dann in einem
+                    Muster angezeigt.
+                */
             
-                $titel = mysqli_real_escape_string($conn, $_GET['titel']); //keine SQL Statements sollen ausgeführt werden
+                $titel = mysqli_real_escape_string($conn, $_GET['titel']); 
                 $regie = mysqli_real_escape_string($conn, $_GET['regie']); 
-
-
-                $sql = "SELECT * FROM film WHERE titel='$titel' AND regie='$regie'"; // Tabelle wird durchsucht
+            
+                
+                $sql = "SELECT * FROM film WHERE titel='$titel' AND regie='$regie'"; 
                 $result = mysqli_query($conn, $sql); // SQL Statement wird an die Datenbank übermittelt
-                $queryResult = mysqli_num_rows($result); // Übereinstimmungen werden "geholt"
-
-
+            
+                $queryResult = mysqli_num_rows($result); 
+            
+                /*
+                    Alle 
+                */
                 if($queryResult > 0){
                         
                     while ($row = mysqli_fetch_assoc($result)){

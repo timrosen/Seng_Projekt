@@ -1,5 +1,9 @@
 <?php
-    session_start();
+/*  
+    Weiterführen der zuvor gestarteten Session bzw. starten einer Session, damit die Session-Variablen 
+    weiter aktiv bleiben und im folgenden genutz werden können.
+*/
+session_start();
 ?>
 
 
@@ -21,6 +25,9 @@
             </div>
         <header><h1 id="heading">Software Engineering Projekt 2018</h1>
         <?php
+            /*
+                Logout Button wird nur angezeigt wenn ein User angemeldet ist
+            */
             if(isset($_SESSION['user_id'])){
         ?>
                     
@@ -40,12 +47,7 @@
         <nav id="mainnav">
             <ul>
                 
-               <!-- <div class="dropdown">
-                <li><a href="Login.php" class="dropbtn">Login</a></li>
-                    <div class="dropdown_content">
-                        <a href="Register.php">Registrieren</a>
-                    </div>
-                </div>-->
+               
                 <li><a href="Verlauf.php">Verlauf</a></li>
                 <li><a href="Watchlist.php">Watchlist</a></li>
                 <li><a href="Suche.php">Suche</a></li>
