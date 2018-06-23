@@ -104,7 +104,7 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
         
              $username = $_SESSION['username'];
         
-            $sql = "SELECT * FROM verlauf WHERE username='$username';";
+            $sql = "SELECT * FROM verlauf WHERE username='$username' ORDER BY ID DESC;";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
         

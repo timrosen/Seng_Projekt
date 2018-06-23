@@ -63,7 +63,7 @@
                     <p class="log_p">Passwort</p>
                         <input type="password" name="pwd" placeholder="Passwort" required>
                         <input type="submit" name="submit" value="Registrieren">
-                            <a href="#">Passwort vergessen?</a><br>
+                        <br>
                             
                 
                 </form>

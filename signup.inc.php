@@ -62,8 +62,7 @@ if(isset($_POST['submit'])){
                 
             }else{
                 /*
-                    Es wird überprüft ob der Username bereits vergeben ist, 
-                    also ein Eintrag in der Tabelle existiert.
+                    Es wird überprüft ob der Username bereits vergeben ist.
                 */
                 
                 $sql = "SELECT * FROM users WHERE username='$username'";

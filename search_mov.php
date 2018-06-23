@@ -137,7 +137,7 @@ include 'includes/connection.php'; // Verbindung zur Datenbank herstellen
                         Zusätzliche Informationen zu einem gesuchten 
                         Film können über "Weiterlesen" erreicht werden.
                         
-                        Der Titel kann mit "+Watchlist" direkt zur wWtchlist hinzugefügt werden.
+                        Der Titel kann mit "+Watchlist" direkt zur Watchlist hinzugefügt werden.
                     */
                     if(isset($_SESSION['user_id'])){
                  ?>               

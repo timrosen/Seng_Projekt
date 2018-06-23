@@ -12,6 +12,28 @@ $regie = $_POST['regie'];
 $dauer = $_POST['dauer'];
 $inhalt = $_POST['inhalt'];
 
+$sql_check = "SELECT * FROM film WHERE titel='$titel'";
+$result_check = mysqli_query($conn, $sql_check); // Übermittlung des Statements an die Datenbank
+
+/*
+    Die Anzahl der gefundenen Ergebnisse wird gespeichert.
+*/
+$resultCheck = mysqli_num_rows($result_check);
+
+/* 
+   Falls bereits ein Eintrag existiert, wird der User zur Suchseite gschickt
+*/
+if($resultCheck > 0){
+                    
+    header("Location: Suche.php?MovieAlreadyExists");
+    exit();
+                
+                    
+    }else{
+
+
+
+
 /*
     Film wird in die zentrale Filmdatenbank eingefügt
 */
@@ -35,7 +57,7 @@ $_SESSION["regie"] = $regie;
 $_SESSION["dauer"] = $dauer;
 $_SESSION["inhalt"] = $inhalt;
 
-
+}
 
 ?>
 

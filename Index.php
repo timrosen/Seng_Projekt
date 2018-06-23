@@ -114,7 +114,7 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
         
         */
         
-        $sql = "SELECT * FROM film;";
+        $sql = "SELECT * FROM film ORDER BY filmID DESC;";
         $result = mysqli_query($conn, $sql); // Übermittlung an die Datenbank
         
         /*
@@ -133,7 +133,27 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
                 
             <h1 class="log_head"><?php echo $row['titel']; ?></h1>
             <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $row['inhalt']; ?></p>
-               
+             <?php   
+                /*
+                    Folgende Optionen sind nur verfügbar falls der User angemeldet ist.
+
+                    Zusätzliche Informationen zu einem gesuchten 
+                    Film können über "Weiterlesen" erreicht werden.
+
+                    Der Titel kann mit "+Watchlist" direkt zur Watchlist hinzugefügt werden.
+                */
+                    if(isset($_SESSION['user_id'])){
+                 ?>               
+                            <a <?php echo "<a href='Suchmuster.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+                            <p class="watchlist_link">Weiterlesen</p></a>
+                            
+                            <a <?php echo "<a href='includes/watchlist.inc.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+                            <p class="watchlist_link">+ Watchlist</p></a>
+                            <br>
+                            <br>
+                <?php 
+                    }
+                ?>         
         </div>  
         <?php
             }
