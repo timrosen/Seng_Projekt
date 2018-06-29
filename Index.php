@@ -166,13 +166,13 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
     </div>
             
     
-    <aside id="sidebar">
+   <!--- <aside id="sidebar">
                 <div style="float: left; width: 50px;">
                 <img src="popcorn.png" width="40px" height="55px" style="margin-top: 30px;">
                 </div>
         <h3 id="heading">Aktuelle Film News</h3> 
 
-     </aside>
+     </aside>-->
             
         
         

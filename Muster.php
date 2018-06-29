@@ -9,6 +9,10 @@ session_start();
 
 include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
 
+$titel = $_SESSION["titel"];
+
+$regie = $_SESSION["regie"];
+
 
 
 
@@ -22,7 +26,6 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
    
 	<head> 
 		<meta charset="UTF-8" /> 
-		<title><?php echo $_SESSION["titel"]; ?></title>
         <link rel="stylesheet" type="text/css"
               href="style.css"
               title="hcrspecific" />
@@ -91,33 +94,67 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
             </ul>
         </nav>
         <div class="loginbox">
-        
+        <?php
+
+            /*
+                Aus der zentralen Filmtabelle wird der Film geholt, 
+                zudem der titel und Regisseur passt. 
+                Danach werden die restlichen Daten zum jeweiligen Film
+                ebenfalls aus der Tabelle "geholt" und dann in einem
+                Muster angezeigt.
+            */
+
+
+
+            $sql = "SELECT * FROM film WHERE titel='$titel' AND regie='$regie'"; 
+            $result = mysqli_query($conn, $sql); // SQL Statement wird an die Datenbank übermittelt
+
+            $queryResult = mysqli_num_rows($result); 
+
+            /*
+                Alle 
+            */
+            if($queryResult > 0){
+
+                while ($row = mysqli_fetch_assoc($result)){
+
+
+    ?>             
+        <title><?php echo $row['titel']; ?></title>
         <img src="popcorn.png" class="avatar" style="margin-top: -100px;">
-                <h1 class="log_head" style="margin-top: -100px;"><?php echo $_SESSION["titel"]; ?></h1>
+                <h1 class="log_head" style="margin-top: -100px;"><?php echo $row['titel']; ?></h1>
             
             
                 
                     <div class="variable_mov">
                 
                        
-                    <p class="log_p">Erscheinungsjahr: </p><p class="muster_layout"><?php echo $_SESSION["jahr"]; ?></p>
+                    <p class="log_p">Erscheinungsjahr: </p><p class="muster_layout"><?php echo $row['jahr']; ?></p>
                        
-                    <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $_SESSION["regie"]; ?></p>
+                    <p class="log_p">Regie: </p><p class="muster_layout"><?php echo $row['regie']; ?></p>
                        
-                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $_SESSION["dauer"]; ?></p>
+                    <p class="log_p">Länge: </p><p class="muster_layout"><?php echo $row['dauer']; ?></p>
                         
                     
-                    <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $_SESSION["inhalt"]; ?></p>
+                    <p class="log_p">Handlung: </p><p class="muster_layout"><?php echo $row['inhalt']; ?></p>
                
                     
-                  
+                    <a <?php echo "<a href='includes/watchlist.inc.php?titel=".$row['titel']."&regie=".$row['regie']."'" ?>>
+                    <br>
+                    <p class="watchlist_add">Zur Watchlist hinzufügen</p></a>
                         
                     </div>  
                     
                 
                 
             </div>
-        
+         <?php    
+                        
+                    }
+
+                }
+
+        ?>
         
         <footer><a href="Index.php">Startseite</a></footer>
         

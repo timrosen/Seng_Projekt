@@ -72,7 +72,7 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
                 }elseif(isset($_SESSION['user_id'])){
                     
             ?>      
-                        <li><a href="Verlauf.html">Verlauf</a></li>
+                        
                         <li><a href="Watchlist.php">Watchlist</a></li>
                         <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
                         <li><a href="Suche.php">Suche</a></li>
