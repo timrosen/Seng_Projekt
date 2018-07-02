@@ -119,8 +119,8 @@ include 'includes/connection.php'; // Verbindung zur Datenbank herstellen
         ?> 
                 <title><?php echo $row['titel']; ?></title>
             
-                <img src="popcorn.png" class="avatar" style="margin-top: -100px;">
-                <h1 class="log_head" style="margin-top: -100px;"><?php echo $row['titel']; ?></h1>
+                <img src="popcorn.png" class="avatar">
+                <h1 class="log_head"><?php echo $row['titel']; ?></h1>
             
                     <div class="variable_mov">
                 

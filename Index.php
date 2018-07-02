@@ -67,6 +67,7 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
                                 </div>
                             </div>
                     <li><a href="Suche.php">Suche</a></li>
+                    <li><a  href="index_sub.php">Bücher</a></li>
                 <?php  
                 /*
                     Die Optionen: Verlauf, Watchlist, Titel hinzufügen 
@@ -84,6 +85,7 @@ include_once 'includes/connection.php'; // Verbindung zur Datenbank herstellen
                         <li><a href="Watchlist.php">Watchlist</a></li>
                         <li><a href="Titel_neu.php">Titel hinzufügen</a></li>
                         <li><a href="Suche.php">Suche</a></li>
+                        <li><a  href="index_sub.php">Bücher</a></li>
                         <p class="user_login">Eingeloggt als: <?php echo $_SESSION['username']; ?></p>
                         
                 <?php 
